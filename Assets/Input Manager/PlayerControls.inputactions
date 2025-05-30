@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Look",
+                    "name": "Aim",
                     "type": "Value",
                     "id": "6b444451-8a00-4d00-a97e-f47457f736a8",
                     "expectedControlType": "Vector2",
@@ -150,7 +150,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Aim",
+                    "name": "Zoom",
                     "type": "Button",
                     "id": "e79d9982-916c-4b4e-a2f4-a8ab45c3f1be",
                     "expectedControlType": "",
@@ -244,7 +244,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Look",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -387,7 +387,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Aim",
+                    "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -101,7 +101,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Look"",
+                    ""name"": ""Aim"",
                     ""type"": ""Value"",
                     ""id"": ""6b444451-8a00-4d00-a97e-f47457f736a8"",
                     ""expectedControlType"": ""Vector2"",
@@ -236,7 +236,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Aim"",
+                    ""name"": ""Zoom"",
                     ""type"": ""Button"",
                     ""id"": ""e79d9982-916c-4b4e-a2f4-a8ab45c3f1be"",
                     ""expectedControlType"": """",
@@ -330,7 +330,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Look"",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -473,7 +473,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Aim"",
+                    ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -726,7 +726,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // Character
         m_Character = asset.FindActionMap("Character", throwIfNotFound: true);
         m_Character_Movement = m_Character.FindAction("Movement", throwIfNotFound: true);
-        m_Character_Look = m_Character.FindAction("Look", throwIfNotFound: true);
+        m_Character_Aim = m_Character.FindAction("Aim", throwIfNotFound: true);
         m_Character_Fire = m_Character.FindAction("Fire", throwIfNotFound: true);
         m_Character_Sprint = m_Character.FindAction("Sprint", throwIfNotFound: true);
         m_Character_EquipSlot1 = m_Character.FindAction("Equip Slot - 1", throwIfNotFound: true);
@@ -741,7 +741,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Character_ToggleMissionUI = m_Character.FindAction("Toggle Mission UI", throwIfNotFound: true);
         m_Character_TogglePauseUI = m_Character.FindAction("Toggle Pause UI", throwIfNotFound: true);
         m_Character_ToggleMinimap = m_Character.FindAction("Toggle Minimap", throwIfNotFound: true);
-        m_Character_Aim = m_Character.FindAction("Aim", throwIfNotFound: true);
+        m_Character_Zoom = m_Character.FindAction("Zoom", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_TogglePauseUI = m_UI.FindAction("Toggle Pause UI", throwIfNotFound: true);
@@ -835,7 +835,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Character;
     private List<ICharacterActions> m_CharacterActionsCallbackInterfaces = new List<ICharacterActions>();
     private readonly InputAction m_Character_Movement;
-    private readonly InputAction m_Character_Look;
+    private readonly InputAction m_Character_Aim;
     private readonly InputAction m_Character_Fire;
     private readonly InputAction m_Character_Sprint;
     private readonly InputAction m_Character_EquipSlot1;
@@ -850,7 +850,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Character_ToggleMissionUI;
     private readonly InputAction m_Character_TogglePauseUI;
     private readonly InputAction m_Character_ToggleMinimap;
-    private readonly InputAction m_Character_Aim;
+    private readonly InputAction m_Character_Zoom;
     /// <summary>
     /// Provides access to input actions defined in input action map "Character".
     /// </summary>
@@ -867,9 +867,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Movement => m_Wrapper.m_Character_Movement;
         /// <summary>
-        /// Provides access to the underlying input action "Character/Look".
+        /// Provides access to the underlying input action "Character/Aim".
         /// </summary>
-        public InputAction @Look => m_Wrapper.m_Character_Look;
+        public InputAction @Aim => m_Wrapper.m_Character_Aim;
         /// <summary>
         /// Provides access to the underlying input action "Character/Fire".
         /// </summary>
@@ -927,9 +927,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @ToggleMinimap => m_Wrapper.m_Character_ToggleMinimap;
         /// <summary>
-        /// Provides access to the underlying input action "Character/Aim".
+        /// Provides access to the underlying input action "Character/Zoom".
         /// </summary>
-        public InputAction @Aim => m_Wrapper.m_Character_Aim;
+        public InputAction @Zoom => m_Wrapper.m_Character_Zoom;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -959,9 +959,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @Look.started += instance.OnLook;
-            @Look.performed += instance.OnLook;
-            @Look.canceled += instance.OnLook;
+            @Aim.started += instance.OnAim;
+            @Aim.performed += instance.OnAim;
+            @Aim.canceled += instance.OnAim;
             @Fire.started += instance.OnFire;
             @Fire.performed += instance.OnFire;
             @Fire.canceled += instance.OnFire;
@@ -1004,9 +1004,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @ToggleMinimap.started += instance.OnToggleMinimap;
             @ToggleMinimap.performed += instance.OnToggleMinimap;
             @ToggleMinimap.canceled += instance.OnToggleMinimap;
-            @Aim.started += instance.OnAim;
-            @Aim.performed += instance.OnAim;
-            @Aim.canceled += instance.OnAim;
+            @Zoom.started += instance.OnZoom;
+            @Zoom.performed += instance.OnZoom;
+            @Zoom.canceled += instance.OnZoom;
         }
 
         /// <summary>
@@ -1021,9 +1021,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @Look.started -= instance.OnLook;
-            @Look.performed -= instance.OnLook;
-            @Look.canceled -= instance.OnLook;
+            @Aim.started -= instance.OnAim;
+            @Aim.performed -= instance.OnAim;
+            @Aim.canceled -= instance.OnAim;
             @Fire.started -= instance.OnFire;
             @Fire.performed -= instance.OnFire;
             @Fire.canceled -= instance.OnFire;
@@ -1066,9 +1066,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @ToggleMinimap.started -= instance.OnToggleMinimap;
             @ToggleMinimap.performed -= instance.OnToggleMinimap;
             @ToggleMinimap.canceled -= instance.OnToggleMinimap;
-            @Aim.started -= instance.OnAim;
-            @Aim.performed -= instance.OnAim;
-            @Aim.canceled -= instance.OnAim;
+            @Zoom.started -= instance.OnZoom;
+            @Zoom.performed -= instance.OnZoom;
+            @Zoom.canceled -= instance.OnZoom;
         }
 
         /// <summary>
@@ -1418,12 +1418,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMovement(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Look" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Aim" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnLook(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Fire" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -1523,12 +1523,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnToggleMinimap(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Aim" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Zoom" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnAim(InputAction.CallbackContext context);
+        void OnZoom(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

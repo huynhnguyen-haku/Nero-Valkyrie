@@ -1127,7 +1127,7 @@ MonoBehaviour:
   aimLaser: {fileID: 1503476023}
   aimTarget: {fileID: 497049304}
   aimVirtualCamera: {fileID: 654445197}
-  trueAimCamera: {fileID: 1147487236}
+  zoomVirtualCamera: {fileID: 1147487236}
   cinemachineCameraTarget: {fileID: 154738371}
   sensitivity: 0.5
   topClamp: 90
@@ -16392,7 +16392,7 @@ GameObject:
   - component: {fileID: 1147487235}
   - component: {fileID: 1147487236}
   m_Layer: 0
-  m_Name: Aim Camera
+  m_Name: Zoom Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using Cinemachine;
+﻿using Cinemachine;
+using UnityEngine;
 
 public class Player_AimController : MonoBehaviour
 {
@@ -15,7 +15,7 @@ public class Player_AimController : MonoBehaviour
 
     [Header("Camera Controls")]
     [SerializeField] private CinemachineVirtualCamera aimVirtualCamera;
-    [SerializeField] private CinemachineVirtualCamera trueAimCamera;
+    [SerializeField] private CinemachineVirtualCamera zoomVirtualCamera;
     [SerializeField] private GameObject cinemachineCameraTarget;
     [SerializeField] private float sensitivity = 0.5f;
     [SerializeField] private float topClamp = 90f;
@@ -143,17 +143,17 @@ public class Player_AimController : MonoBehaviour
     private void AssignInputEvents()
     {
         controls = player.controls;
-        controls.Character.Look.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
-        controls.Character.Look.canceled += ctx => mouseInput = Vector2.zero;
+        controls.Character.Aim.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
+        controls.Character.Aim.canceled += ctx => mouseInput = Vector2.zero;
 
-        controls.Character.Aim.performed += ctx =>
+        controls.Character.Zoom.performed += ctx =>
         {
-                trueAimCamera.gameObject.SetActive(true);
+            zoomVirtualCamera.gameObject.SetActive(true);
         };
 
-        controls.Character.Aim.canceled += ctx =>
+        controls.Character.Zoom.canceled += ctx =>
         {
-                trueAimCamera.gameObject.SetActive(false);
+            zoomVirtualCamera.gameObject.SetActive(false);
         };
     }
 
