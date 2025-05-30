@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a223680a8df1646aafe9daca912989, type: 3}
+  m_Name: Base Defense
+  m_EditorClassIdentifier: 
+  missionName: Cyber Corruption
+  missionDescription: Unleash a virus to dismantle their defenses. Once finished,
+    it will kill all enemies in the map.
+  missionObjective: 'Objective: Activate the virus.'
+  reward: 1500
+  missionPreview: {fileID: -1254829206, guid: f5242cd4daa99d44fa81f5b0c3aba104, type: 3}
+  isDefenceStarted: 0
+  isMissionCompleted: 1
+  defenseDuration: 60
+  timeBetweenWaves: 10
+  numberOfRespawnPoints: 4
+  respawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  numberOfEnemiesPerWave: 4
+  enemyPrefabs:
+  - {fileID: 8978599588123965400, guid: 1ccd577960029fd45aaaaf9ca9da413b, type: 3}
+  - {fileID: 6286757198968117658, guid: 9407b6350ccf19a4caff38c4cee59cae, type: 3}
+  - {fileID: 7172100156523994304, guid: d651001e986a2f94281fd5753ac3b203, type: 3}
+  - {fileID: 7927049067197686440, guid: 1c7ed68b6f2f7e14fab29213667d34ae, type: 3}
+  - {fileID: 1162088541114011887, guid: 2f9faf8c92c3511429c7e3ec5c7f3cc6, type: 3}
+  - {fileID: 5478877348500432786, guid: 5fe01cf504556fa46924c625bf47d817, type: 3}
+  - {fileID: 8483969353424229694, guid: fef72c593063d4f4c820645546a32c30, type: 3}

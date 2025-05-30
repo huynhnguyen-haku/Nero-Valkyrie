@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8441ddcfb600dd244ba254f7cc091507, type: 3}
+  m_Name: Key Finding
+  m_EditorClassIdentifier: 
+  missionName: Core Extraction
+  missionDescription: Hunt down and recover powerful enemy core. Be careful, enemy
+    who has it will be stronger.
+  missionObjective: 'Objective: Retrieve the giant core.'
+  reward: 1000
+  missionPreview: {fileID: -1918913486, guid: e546b50d752417345977f3574f8ec241, type: 3}
+  key: {fileID: 438324553830291184, guid: 46f02180e96a83649ba6dd8f7db0d314, type: 3}
+  isKeyFound: 0

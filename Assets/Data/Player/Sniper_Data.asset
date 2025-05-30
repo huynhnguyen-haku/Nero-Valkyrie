@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58354826785886d4fb98529b1feff3e1, type: 3}
+  m_Name: Sniper_Data
+  m_EditorClassIdentifier: 
+  weaponName: Eclipse Lance
+  weaponType: 4
+  bulletDamage: 100
+  shotType: 0
+  bulletsPerShot: 1
+  fireRate: 60
+  bulletsInMagazine: 5
+  magazineCapacity: 5
+  TotalReserveAmmo: 10
+  reloadSpeed: 2.5
+  equipSpeed: 1
+  cameraDistance: 8
+  minSpread: 0
+  maxSpread: 0
+  spreadIncreaseRate: 0.15
+  burstAvailable: 0
+  burstActive: 0
+  burst_BulletsPerShot: 0
+  burst_FireRate: 0
+  burst_FireDelay: 0.1
+  weaponIcon: {fileID: 1437709514, guid: 3477fe9a26e0faa42b5a9b5b258229c1, type: 3}
+  weaponInfo: Precision tool for long-range bounties
+  isUnlocked: 0
+  price: 2800

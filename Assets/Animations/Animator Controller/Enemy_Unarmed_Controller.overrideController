@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Enemy_Unarmed_Controller
+  m_Controller: {fileID: 9100000, guid: 7ad357e5f4520a341bbece8ecc100f4d, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 8e5ebf6251982e24fab47aad6a06980e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7d63129388dafb74da96697b63439e0d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2eaada741782cb54d84b7a3df96a10c7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: dfc16a3938926a24788a28da0521d063, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5155ab0fc9d5a954c9145fd85a1f7d33, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 576e9a5e626b6374583dbdcbb086f1d1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c73168d7d0ad6ad45b98a39aca3e95b5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f84eb693b78a1614582d3408142dc468, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5d61ded604dbb2844a40717c59dffe93, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 02697bbe4120a9848b259c1fd727c098, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 870808dfeb6523a4f83c4dda57715673, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 852ecd95c0ff5424b86b5f3b32854239, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2e396a43b545fe5408547ba126225cb7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 40c9e3f6b1453224e81cb6c0c0b76aca, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 71b7dc90e3a08f04a9f727308167c28f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d203dda2be7715c4182718f9796be361, type: 2}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: 71794ad82ce035544a7c9bfe70c11784, type: 3}
+    m_OverrideClip: {fileID: -203655887218126122, guid: 47904bea67ac6214386044ebb11afba7, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 26491a34878665b459ca4d4472fc2555, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2dd20deaff3f42f4a87464c87fa6c96f, type: 2}
