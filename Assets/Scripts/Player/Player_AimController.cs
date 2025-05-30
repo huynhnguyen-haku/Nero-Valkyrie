@@ -15,6 +15,7 @@ public class Player_AimController : MonoBehaviour
 
     [Header("Camera Controls")]
     [SerializeField] private CinemachineVirtualCamera aimVirtualCamera;
+    [SerializeField] private CinemachineVirtualCamera trueAimCamera;
     [SerializeField] private GameObject cinemachineCameraTarget;
     [SerializeField] private float sensitivity = 0.5f;
     [SerializeField] private float topClamp = 90f;
@@ -45,7 +46,7 @@ public class Player_AimController : MonoBehaviour
         if (player.health.playerIsDead || !player.controlsEnabled)
             return;
 
-        aimVirtualCamera.gameObject.SetActive(true); // Bật camera khi cần
+        aimVirtualCamera.gameObject.SetActive(true);
         UpdateAimVisual();
         UpdateAimPosition();
     }
@@ -61,7 +62,6 @@ public class Player_AimController : MonoBehaviour
     public Transform Aim() => aim;
 
     #region Aim Logic
-
     private void UpdateAimVisual()
     {
         aim.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
@@ -143,8 +143,18 @@ public class Player_AimController : MonoBehaviour
     private void AssignInputEvents()
     {
         controls = player.controls;
-        controls.Character.Aim.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
-        controls.Character.Aim.canceled += ctx => mouseInput = Vector2.zero;
+        controls.Character.Look.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
+        controls.Character.Look.canceled += ctx => mouseInput = Vector2.zero;
+
+        controls.Character.Aim.performed += ctx =>
+        {
+                trueAimCamera.gameObject.SetActive(true);
+        };
+
+        controls.Character.Aim.canceled += ctx =>
+        {
+                trueAimCamera.gameObject.SetActive(false);
+        };
     }
 
     #endregion

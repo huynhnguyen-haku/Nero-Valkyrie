@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Aim",
+                    "name": "Look",
                     "type": "Value",
                     "id": "6b444451-8a00-4d00-a97e-f47457f736a8",
                     "expectedControlType": "Vector2",
@@ -141,18 +141,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Toggle Lock On",
+                    "name": "Toggle Minimap",
                     "type": "Button",
-                    "id": "f6a5ebf9-b4fb-4342-9d96-3795410098eb",
+                    "id": "27a80233-dfe2-4f85-822e-381a600398bf",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Toggle Minimap",
+                    "name": "Aim",
                     "type": "Button",
-                    "id": "27a80233-dfe2-4f85-822e-381a600398bf",
+                    "id": "e79d9982-916c-4b4e-a2f4-a8ab45c3f1be",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -244,7 +244,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Aim",
+                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -371,23 +371,23 @@
                 },
                 {
                     "name": "",
-                    "id": "70fae19e-c9c8-484f-a105-0c215a384e3b",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Toggle Lock On",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "37c5bc01-fe49-4c52-a7a9-68636f6aeb52",
                     "path": "<Keyboard>/m",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Toggle Minimap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a81d8756-6389-4ca2-bf1b-a4e3d245da21",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
