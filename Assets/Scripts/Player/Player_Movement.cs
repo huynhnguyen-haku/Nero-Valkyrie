@@ -76,7 +76,7 @@ public class Player_Movement : MonoBehaviour
             // Pause or resume animator
             if (animator != null)
                 animator.speed = isPaused ? 0 : 1;
-            
+
         }
     }
 
@@ -105,27 +105,12 @@ public class Player_Movement : MonoBehaviour
     // Because if the player is locked on, the player should rotate to face the enemy
     private void ApplyRotation()
     {
-        if (player.aim.isLockedOn && player.aim.lockedEnemy != null)
+        Vector3 cameraForward = Camera.main.transform.forward;
+        cameraForward.y = 0; // Giữ nhân vật thẳng đứng
+        if (cameraForward.sqrMagnitude > 0.01f)
         {
-            // Xoay về phía mục tiêu khóa, giữ nguyên logic hiện tại
-            Vector3 directionToTarget = player.aim.lockedEnemy.position - transform.position;
-            directionToTarget.y = 0;
-            if (directionToTarget.sqrMagnitude > 0.01f)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
-            }
-        }
-        else
-        {
-            // Xoay nhân vật theo hướng camera khi không khóa mục tiêu
-            Vector3 cameraForward = Camera.main.transform.forward;
-            cameraForward.y = 0; // Giữ nhân vật thẳng đứng
-            if (cameraForward.sqrMagnitude > 0.01f)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(cameraForward);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
-            }
+            Quaternion targetRotation = Quaternion.LookRotation(cameraForward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
         }
     }
 

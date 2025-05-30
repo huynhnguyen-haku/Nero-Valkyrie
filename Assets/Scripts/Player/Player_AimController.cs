@@ -25,12 +25,6 @@ public class Player_AimController : MonoBehaviour
     [Header("Aim Settings")]
     [SerializeField] private Transform aim;
     [SerializeField] private LayerMask aimLayer;
-    [SerializeField] private LayerMask lockOnLayer;
-
-    [Header("Lock-On Settings")]
-    [SerializeField] private float lockOnRadius = 2f;
-    public Transform lockedEnemy;
-    public bool isLockedOn;
 
     private Vector2 mouseInput;
     private RaycastHit lastKnownMouseHit;
@@ -105,19 +99,6 @@ public class Player_AimController : MonoBehaviour
 
     private void UpdateAimPosition()
     {
-        if (isLockedOn && lockedEnemy != null)
-        {
-            aim.position = lockedEnemy.position;
-            aimTarget.GetComponent<SpriteRenderer>().color = Color.red;
-            Vector3 direction = lockedEnemy.position - transform.position;
-            direction.y = 0;
-            if (direction.sqrMagnitude > 0.01f)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
-            }
-        }
-        else
         {
             RaycastHit hitInfo = GetAimHitInfo();
             aim.position = hitInfo.point;
@@ -157,61 +138,6 @@ public class Player_AimController : MonoBehaviour
 
     #endregion
 
-    #region Lock-On Logic
-
-    private void ToggleLockOn(bool enable)
-    {
-        isLockedOn = enable;
-        if (isLockedOn)
-            CheckLockOn();
-        else
-            lockedEnemy = null;
-    }
-
-    private void CheckLockOn()
-    {
-        if (!isLockedOn)
-            return;
-
-        Collider[] enemies = Physics.OverlapSphere(aim.position, lockOnRadius, lockOnLayer);
-        if (enemies.Length > 0)
-        {
-            Transform closestEnemy = null;
-            float closestDistance = float.MaxValue;
-            foreach (var enemy in enemies)
-            {
-                float distance = Vector3.Distance(aim.position, enemy.transform.position);
-                if (distance < closestDistance)
-                {
-                    closestDistance = distance;
-                    closestEnemy = enemy.transform;
-                }
-            }
-            if (closestEnemy != null)
-                lockedEnemy = closestEnemy;
-        }
-    }
-
-    private void RotatePlayerTowardsLockedTarget()
-    {
-        if (lockedEnemy == null || player == null)
-            return;
-
-        Vector3 directionToTarget = lockedEnemy.position - player.transform.position;
-        directionToTarget.y = 0;
-        if (directionToTarget.sqrMagnitude > 0.01f)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
-            player.transform.rotation = Quaternion.Slerp(
-                player.transform.rotation,
-                targetRotation,
-                Time.deltaTime * 10f
-            );
-        }
-    }
-
-    #endregion
-
     #region Input Events
 
     private void AssignInputEvents()
@@ -219,8 +145,6 @@ public class Player_AimController : MonoBehaviour
         controls = player.controls;
         controls.Character.Aim.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
         controls.Character.Aim.canceled += ctx => mouseInput = Vector2.zero;
-        controls.Character.ToggleLockOn.performed += ctx => ToggleLockOn(true);
-        controls.Character.ToggleLockOn.canceled += ctx => ToggleLockOn(false);
     }
 
     #endregion
