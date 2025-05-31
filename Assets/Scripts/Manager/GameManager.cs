@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
     {
         TimeManager.instance.SlowMotionFor(2);
         UI.instance.ShowGameOverUI();
-        CameraManager.instance.ChangeCameraDistance(5);
+        //CameraManager.instance.ChangeCameraDistance(5);
         Cursor.visible = true;
         UpdateGameState(GameState.GameOver);
     }

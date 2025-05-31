@@ -5854,8 +5854,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -46.19147, y: -2.296152, z: 71.635124}
+  m_LocalRotation: {x: 0, y: -0.76183724, z: 0, w: 0.6477685}
+  m_LocalPosition: {x: -40.896416, y: -2.863152, z: 77.42508}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10431,9 +10431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ee000ad5a84414d842c8ef6e9933f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canChangeCameraDistance: 1
-  targetCameraDistance: 2
-  distanceChangeRate: 0.25
+  carVirtualCamera: {fileID: 1558949293}
 --- !u!1 &713540585
 GameObject:
   m_ObjectHideFlags: 0
@@ -21564,7 +21562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1558949292
 Transform:
   m_ObjectHideFlags: 0
@@ -21574,7 +21572,7 @@ Transform:
   m_GameObject: {fileID: 1558949291}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
-  m_LocalPosition: {x: -46.19147, y: -2.296152, z: 71.635124}
+  m_LocalPosition: {x: -38.052452, y: -1.113152, z: 77.381805}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21600,7 +21598,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 1876783962}
+  m_Follow: {fileID: 154738372}
   m_Lens:
     FieldOfView: 70
     OrthographicSize: 5

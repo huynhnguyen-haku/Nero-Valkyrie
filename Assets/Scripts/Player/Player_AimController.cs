@@ -7,7 +7,6 @@ public class Player_AimController : MonoBehaviour
 
     private Player player;
     private PlayerControls controls;
-    private CameraManager cameraManager;
 
     [Header("Aim Visual - Laser")]
     public LineRenderer aimLaser;
@@ -16,6 +15,7 @@ public class Player_AimController : MonoBehaviour
     [Header("Camera Controls")]
     [SerializeField] private CinemachineVirtualCamera aimVirtualCamera;
     [SerializeField] private CinemachineVirtualCamera zoomVirtualCamera;
+
     [SerializeField] private GameObject cinemachineCameraTarget;
     [SerializeField] private float sensitivity = 0.5f;
     [SerializeField] private float topClamp = 90f;
@@ -33,7 +33,6 @@ public class Player_AimController : MonoBehaviour
     private void Start()
     {
         instance = this;
-        cameraManager = CameraManager.instance;
         player = GetComponent<Player>();
         AssignInputEvents();
         if (aimTarget != null)

@@ -57,7 +57,7 @@ public class Car_Interaction : Interactable
         player.transform.parent = transform;
         player.transform.localPosition = Vector3.up / 2;
 
-        //CameraManager.instance.ChangeCameraTarget(transform, 4.8f);
+        CameraManager.instance.ChangeToCarVirtualCamera();
 
         // Disable NavMeshObstacle when in car
         if (carObstacle != null)
@@ -85,7 +85,7 @@ public class Car_Interaction : Interactable
         ControlsManager.instance.SwitchToCharacterControls();
         Player_AimController aim = GameManager.instance.player.aim;
 
-        //CameraManager.instance.ChangeCameraTarget(aim.GetAimCameraTarget(), 2f);
+        CameraManager.instance.ChangeToPlayerVirtualCamera();
 
         // Enable NavMeshObstacle when out of car
         if (carObstacle != null)
