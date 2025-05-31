@@ -87,6 +87,10 @@ public class Car_Interaction : Interactable
 
         CameraManager.instance.ChangeToPlayerVirtualCamera();
 
+        var aimController = GameManager.instance.player.aim;
+        if (aimController != null)
+            aimController.allowCameraLook = true;
+
         // Enable NavMeshObstacle when out of car
         if (carObstacle != null)
         {

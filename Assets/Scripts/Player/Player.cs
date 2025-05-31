@@ -57,4 +57,11 @@ public class Player : MonoBehaviour
         aim.EnableLaserAim(enabled);
         aim.EnableAimTarget(enabled);
     }
+
+    public void SetMovementEnabled(bool enabled)
+    {
+        if (movement != null)
+            movement.enabled = enabled;
+    }
+
 }

@@ -32,10 +32,25 @@ public class ControlsManager : MonoBehaviour
         controls.Car.Disable();
 
         player.SetControlsEnabled(true);
+        player.SetMovementEnabled(true);
+        player.aim.allowCameraLook = true;
+        player.weapon.enabled = true; // Cho phép bắn
         UI.instance.inGameUI.SwitchToCharacterUI();
     }
 
-    // Enable UI controls and disable gameplay controls
+    public void SwitchToCarControls()
+    {
+        controls.Car.Enable();
+        controls.Character.Enable();
+        controls.UI.Disable();
+
+        player.SetControlsEnabled(false);
+        player.SetMovementEnabled(false);
+        player.aim.allowCameraLook = true;
+        player.weapon.enabled = false; // Không cho phép bắn khi ở trên xe
+        UI.instance.inGameUI.SwitchToCarUI();
+    }
+
     public void SwitchToUIControls()
     {
         controls.UI.Enable();
@@ -43,18 +58,10 @@ public class ControlsManager : MonoBehaviour
         controls.Car.Disable();
 
         player.SetControlsEnabled(false);
+        player.aim.allowCameraLook = false; // Không cho phép xoay camera khi ở UI
+        player.weapon.enabled = false; // Không cho phép bắn khi ở UI
     }
 
-    // Enable car controls and related UI
-    public void SwitchToCarControls()
-    {
-        controls.Car.Enable();
-        controls.Character.Disable();
-        controls.UI.Disable();
-
-        player.SetControlsEnabled(false);
-        UI.instance.inGameUI.SwitchToCarUI();
-    }
 
     #endregion
 }

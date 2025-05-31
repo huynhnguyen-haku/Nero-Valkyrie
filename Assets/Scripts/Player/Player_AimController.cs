@@ -15,7 +15,6 @@ public class Player_AimController : MonoBehaviour
     [Header("Camera Controls")]
     [SerializeField] private CinemachineVirtualCamera aimVirtualCamera;
     [SerializeField] private CinemachineVirtualCamera zoomVirtualCamera;
-
     [SerializeField] private GameObject cinemachineCameraTarget;
     [SerializeField] private float sensitivity = 0.5f;
     [SerializeField] private float topClamp = 90f;
@@ -26,6 +25,8 @@ public class Player_AimController : MonoBehaviour
     [Header("Aim Settings")]
     [SerializeField] private Transform aim;
     [SerializeField] private LayerMask aimLayer;
+    public bool allowCameraLook = true; 
+
 
     private Vector2 mouseInput;
     private RaycastHit lastKnownMouseHit;
@@ -42,7 +43,10 @@ public class Player_AimController : MonoBehaviour
 
     private void Update()
     {
-        if (player.health.playerIsDead || !player.controlsEnabled)
+        if (!allowCameraLook)
+            return;
+
+        if (player.health.playerIsDead)
             return;
 
         aimVirtualCamera.gameObject.SetActive(true);
@@ -52,11 +56,15 @@ public class Player_AimController : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (!allowCameraLook)
+            return;
+
         cinemachineTargetYaw += mouseInput.x * sensitivity;
         cinemachineTargetPitch -= mouseInput.y * sensitivity;
         cinemachineTargetPitch = Mathf.Clamp(cinemachineTargetPitch, bottomClamp, topClamp);
         cinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch, cinemachineTargetYaw, 0f);
     }
+
 
     public Transform Aim() => aim;
 
@@ -145,13 +153,11 @@ public class Player_AimController : MonoBehaviour
         controls.Character.Aim.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
         controls.Character.Aim.canceled += ctx => mouseInput = Vector2.zero;
 
-        // Activate zoom virtual camera when aiming
         controls.Character.Zoom.performed += ctx =>
         {
             zoomVirtualCamera.gameObject.SetActive(true);
         };
 
-        // Deactivate zoom virtual camera when zooming is canceled
         controls.Character.Zoom.canceled += ctx =>
         {
             zoomVirtualCamera.gameObject.SetActive(false);

@@ -521,6 +521,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Aim"",
+                    ""type"": ""Value"",
+                    ""id"": ""f5958a33-ee57-414f-ac9a-4db7e1c54dd9"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""Toggle Minimap"",
                     ""type"": ""Button"",
                     ""id"": ""5aec1e7b-ef47-4b12-96e9-52a7e56a86ef"",
@@ -623,6 +632,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58f05398-d00e-4c20-b91d-82e45842bcb0"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
@@ -748,6 +768,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // Car
         m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
         m_Car_Movement = m_Car.FindAction("Movement", throwIfNotFound: true);
+        m_Car_Aim = m_Car.FindAction("Aim", throwIfNotFound: true);
         m_Car_ToggleMinimap = m_Car.FindAction("Toggle Minimap", throwIfNotFound: true);
         m_Car_TogglePauseUI = m_Car.FindAction("Toggle Pause UI", throwIfNotFound: true);
         m_Car_EnterExit = m_Car.FindAction("Enter/Exit", throwIfNotFound: true);
@@ -1203,6 +1224,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Car;
     private List<ICarActions> m_CarActionsCallbackInterfaces = new List<ICarActions>();
     private readonly InputAction m_Car_Movement;
+    private readonly InputAction m_Car_Aim;
     private readonly InputAction m_Car_ToggleMinimap;
     private readonly InputAction m_Car_TogglePauseUI;
     private readonly InputAction m_Car_EnterExit;
@@ -1222,6 +1244,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Car/Movement".
         /// </summary>
         public InputAction @Movement => m_Wrapper.m_Car_Movement;
+        /// <summary>
+        /// Provides access to the underlying input action "Car/Aim".
+        /// </summary>
+        public InputAction @Aim => m_Wrapper.m_Car_Aim;
         /// <summary>
         /// Provides access to the underlying input action "Car/ToggleMinimap".
         /// </summary>
@@ -1267,6 +1293,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @Aim.started += instance.OnAim;
+            @Aim.performed += instance.OnAim;
+            @Aim.canceled += instance.OnAim;
             @ToggleMinimap.started += instance.OnToggleMinimap;
             @ToggleMinimap.performed += instance.OnToggleMinimap;
             @ToggleMinimap.canceled += instance.OnToggleMinimap;
@@ -1293,6 +1322,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @Aim.started -= instance.OnAim;
+            @Aim.performed -= instance.OnAim;
+            @Aim.canceled -= instance.OnAim;
             @ToggleMinimap.started -= instance.OnToggleMinimap;
             @ToggleMinimap.performed -= instance.OnToggleMinimap;
             @ToggleMinimap.canceled -= instance.OnToggleMinimap;
@@ -1559,6 +1591,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMovement(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Aim" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAim(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Toggle Minimap" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
