@@ -6,7 +6,7 @@ public class CameraManager : MonoBehaviour
     public static CameraManager instance;
 
     private CinemachineVirtualCamera virtualCamera;
-    private CinemachineFramingTransposer transposer;
+    private Cinemachine3rdPersonFollow thirdPersonFollow;
 
     [Header("Camera Settings")]
     [SerializeField] private bool canChangeCameraDistance;
@@ -25,7 +25,7 @@ public class CameraManager : MonoBehaviour
             Destroy(gameObject);
 
         virtualCamera = GetComponentInChildren<CinemachineVirtualCamera>();
-        transposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+        thirdPersonFollow = virtualCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
     }
 
     private void Update()
@@ -43,11 +43,11 @@ public class CameraManager : MonoBehaviour
         if (!canChangeCameraDistance)
             return;
 
-        float currentDistance = transposer.m_CameraDistance;
+        float currentDistance = thirdPersonFollow.CameraDistance;
         if (Mathf.Abs(targetCameraDistance - currentDistance) < 0.1f)
             return;
 
-        transposer.m_CameraDistance = Mathf.Lerp(currentDistance, targetCameraDistance, distanceChangeRate * Time.deltaTime);
+        thirdPersonFollow.CameraDistance = Mathf.Lerp(currentDistance, targetCameraDistance, distanceChangeRate * Time.deltaTime);
     }
 
     // Set new camera distance and change rate
@@ -58,10 +58,9 @@ public class CameraManager : MonoBehaviour
     }
 
     // Change camera follow target and optionally distance/lookahead
-    public void ChangeCameraTarget(Transform target, float cameraDistance = 10, float newLookAheadTime = 0)
+    public void ChangeCameraTarget(Transform target, float cameraDistance = 10)
     {
         virtualCamera.Follow = target;
-        transposer.m_LookaheadTime = newLookAheadTime;
         ChangeCameraDistance(cameraDistance);
     }
 

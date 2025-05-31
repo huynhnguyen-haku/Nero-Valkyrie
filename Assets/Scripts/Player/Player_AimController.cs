@@ -146,11 +146,13 @@ public class Player_AimController : MonoBehaviour
         controls.Character.Aim.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
         controls.Character.Aim.canceled += ctx => mouseInput = Vector2.zero;
 
+        // Activate zoom virtual camera when aiming
         controls.Character.Zoom.performed += ctx =>
         {
             zoomVirtualCamera.gameObject.SetActive(true);
         };
 
+        // Deactivate zoom virtual camera when zooming is canceled
         controls.Character.Zoom.canceled += ctx =>
         {
             zoomVirtualCamera.gameObject.SetActive(false);
