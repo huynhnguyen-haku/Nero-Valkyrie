@@ -1136,6 +1136,7 @@ MonoBehaviour:
   aimLayer:
     serializedVersion: 2
     m_Bits: 268481
+  allowCameraLook: 1
 --- !u!114 &22133710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6156,7 +6157,7 @@ GameObject:
   - component: {fileID: 346300756}
   - component: {fileID: 346300758}
   - component: {fileID: 346300757}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: machine_gun_spinner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14633,7 +14634,7 @@ GameObject:
   - component: {fileID: 997282187}
   - component: {fileID: 997282186}
   - component: {fileID: 997282185}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: weap_minigun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15111,7 +15112,7 @@ MonoBehaviour:
   currentCar: {fileID: 0}
   playerMoney: 0
   friendlyFire: 1
-  quickStart: 1
+  quickStart: 0
 --- !u!4 &1056934589
 Transform:
   m_ObjectHideFlags: 0

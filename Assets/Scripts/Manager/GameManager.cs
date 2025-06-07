@@ -120,18 +120,22 @@ public class GameManager : MonoBehaviour
         {
             case GameState.MainMenu:
                 AudioManager.instance.PlayBGM(0);
+                Cursor.lockState = CursorLockMode.None; // Specify cursor behavior for main menu
                 break;
 
             case GameState.InGame:
                 AudioManager.instance.PlayBGM(1);
+                Cursor.lockState = CursorLockMode.Locked; // Lock cursor when switching to character UI
                 break;
 
             case GameState.GameOver:
                 AudioManager.instance.PlayBGM(2);
+                Cursor.lockState = CursorLockMode.None; 
                 break;
 
             case GameState.MissionComplete:
                 AudioManager.instance.PlayBGM(3);
+                Cursor.lockState = CursorLockMode.None; 
                 break;
         }
 

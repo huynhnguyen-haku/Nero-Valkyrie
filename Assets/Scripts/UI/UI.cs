@@ -116,6 +116,8 @@ public class UI : MonoBehaviour
         }
 
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
         SwitchTo(pauseUI);
         ControlsManager.instance.SwitchToUIControls();
         TimeManager.instance.PauseTime();
