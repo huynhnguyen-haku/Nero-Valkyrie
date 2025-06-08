@@ -74,10 +74,12 @@ public class Player_WeaponController : MonoBehaviour
         if (i >= weaponSlots.Count)
             return;
 
+        if (currentWeapon == weaponSlots[i])
+            return;
+
         SetWeaponReady(false);
         currentWeapon = weaponSlots[i];
         player.weaponVisuals.PlayWeaponEquipAnimation();
-        //CameraManager.instance.ChangeCameraDistance(currentWeapon.cameraDistance);
         UpdateWeaponUI();
     }
 
@@ -142,8 +144,6 @@ public class Player_WeaponController : MonoBehaviour
     // Handle burst fire logic
     private IEnumerator BurstFire()
     {
-        SetWeaponReady(false);
-
         for (int i = 1; i <= currentWeapon.bulletsPerShot; i++)
         {
             FireSingleBullet();
