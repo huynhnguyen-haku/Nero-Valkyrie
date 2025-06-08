@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: arrgresssionRange
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2363555461701123622, guid: b95db5b9c6d616a42978ba76cbc28ae4, type: 3}
+      propertyPath: whatIsAlly.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 4304375820993687407, guid: b95db5b9c6d616a42978ba76cbc28ae4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.172349
