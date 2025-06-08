@@ -193,7 +193,7 @@ public class Enemy_Range : Enemy
     public bool IsAimingOnPlayer()
     {
         float distanceAimToPlayer = Vector3.Distance(aim.position, player.position);
-        return distanceAimToPlayer < 2;
+        return distanceAimToPlayer < 4;
     }
 
     // True if enemy can see player

@@ -41,10 +41,9 @@ public class HealthController : MonoBehaviour
 
     public void UpdateHeathVFX()
     {
-        // Return early if lowHealthEffect is null
-        if (lowHealthEffect == null)
+        // Return early if lowHealthEffect is null or the entity is dead
+        if (lowHealthEffect == null || isDead)
             return;
-
 
         // Enable VFX if health is below 25%
         if (currentHealth < maxHealth * 0.25f)
@@ -52,15 +51,14 @@ public class HealthController : MonoBehaviour
             if (!lowHealthEffect.activeSelf)
                 lowHealthEffect.SetActive(true);
         }
-
         // Disable VFX if health is 25% or above
-        // Used when player picks up medkit
         else
         {
             if (lowHealthEffect.activeSelf)
                 lowHealthEffect.SetActive(false);
         }
     }
+
 
     // Return true if the enemy should die
     public bool EnemyShouldDie()
@@ -86,7 +84,7 @@ public class HealthController : MonoBehaviour
         // Disable the low health effect if the player is dead
         if (currentHealth <= 0 && lowHealthEffect != null)
             lowHealthEffect.SetActive(false);
-        
+
         return currentHealth <= 0;
     }
 
