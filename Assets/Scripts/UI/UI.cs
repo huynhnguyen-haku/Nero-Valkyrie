@@ -91,7 +91,10 @@ public class UI : MonoBehaviour
         if (pauseUI.activeSelf)
         {
             SwitchTo(inGameUI.gameObject);
+
             Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+
             if (GameManager.instance.player.movement.isInCar)
                 ControlsManager.instance.SwitchToCarControls();
             else

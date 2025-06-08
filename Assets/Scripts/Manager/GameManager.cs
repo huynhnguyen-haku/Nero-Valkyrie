@@ -63,7 +63,10 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         SetDefaultWeapon();
+
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         UpdateGameState(GameState.InGame);
     }
 
@@ -71,6 +74,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
         PathfindingIndicator pathfindingIndicator = FindObjectOfType<PathfindingIndicator>();
         if (pathfindingIndicator != null)
@@ -88,7 +92,10 @@ public class GameManager : MonoBehaviour
     {
         TimeManager.instance.SlowMotionFor(2);
         UI.instance.ShowGameOverUI();
+
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
         UpdateGameState(GameState.GameOver);
     }
 
@@ -97,7 +104,10 @@ public class GameManager : MonoBehaviour
         UI.instance.DisplayVictoryScreenUI();
         ControlsManager.instance.controls.Character.Disable();
         player.health.currentHealth += 999;
+
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
         UpdateGameState(GameState.MissionComplete);
     }
 
@@ -120,22 +130,18 @@ public class GameManager : MonoBehaviour
         {
             case GameState.MainMenu:
                 AudioManager.instance.PlayBGM(0);
-                Cursor.lockState = CursorLockMode.None; // Specify cursor behavior for main menu
                 break;
 
             case GameState.InGame:
                 AudioManager.instance.PlayBGM(1);
-                Cursor.lockState = CursorLockMode.Locked; // Lock cursor when switching to character UI
                 break;
 
             case GameState.GameOver:
                 AudioManager.instance.PlayBGM(2);
-                Cursor.lockState = CursorLockMode.None; 
                 break;
 
             case GameState.MissionComplete:
                 AudioManager.instance.PlayBGM(3);
-                Cursor.lockState = CursorLockMode.None; 
                 break;
         }
 

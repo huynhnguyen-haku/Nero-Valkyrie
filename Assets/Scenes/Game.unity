@@ -1067,7 +1067,7 @@ MonoBehaviour:
     burstActive: 0
   bulletImpactForce: 100
   bulletPrefab: {fileID: 4456756728090714116, guid: 368f2f8661611654abca43546366fbfb, type: 3}
-  bulletSpeed: 80
+  bulletSpeed: 160
   weaponHolder: {fileID: 862298342}
   weaponSlots:
   - weaponType: 2

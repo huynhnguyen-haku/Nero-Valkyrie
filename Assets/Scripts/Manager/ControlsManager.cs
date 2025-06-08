@@ -61,7 +61,5 @@ public class ControlsManager : MonoBehaviour
         player.aim.allowCameraLook = false; // Không cho phép xoay camera khi ở UI
         player.weapon.enabled = false; // Không cho phép bắn khi ở UI
     }
-
-
     #endregion
 }
