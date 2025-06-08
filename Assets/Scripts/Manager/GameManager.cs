@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -109,6 +110,23 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         UpdateGameState(GameState.MissionComplete);
+
+        // Disable all enemies on the map
+        HealthController.muteDeathSound = true;
+        Enemy[] allEnemies = FindObjectsOfType<Enemy>();
+        foreach (var enemy in allEnemies)
+        {
+            HealthController healthController = enemy.GetComponent<HealthController>();
+            if (healthController != null && !healthController.isDead)
+            {
+                NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
+                if (agent != null && agent.enabled)
+                {
+                    healthController.SetHealthToZero();
+                }
+            }
+        }
+        HealthController.muteDeathSound = false;
     }
 
     // Set default weapon selection for player

@@ -25,7 +25,8 @@ public class Player_AimController : MonoBehaviour
     [Header("Aim Settings")]
     [SerializeField] private Transform aim;
     [SerializeField] private LayerMask aimLayer;
-    public bool allowCameraLook = true; 
+    public bool allowCameraLook = true;
+    public bool allowZoom = true;
 
 
     private Vector2 mouseInput;
@@ -155,13 +156,16 @@ public class Player_AimController : MonoBehaviour
 
         controls.Character.Zoom.performed += ctx =>
         {
-            zoomVirtualCamera.gameObject.SetActive(true);
+            if (allowZoom)
+                zoomVirtualCamera.gameObject.SetActive(true);
         };
 
         controls.Character.Zoom.canceled += ctx =>
         {
-            zoomVirtualCamera.gameObject.SetActive(false);
+            if (allowZoom)
+                zoomVirtualCamera.gameObject.SetActive(false);
         };
+
     }
 
     #endregion

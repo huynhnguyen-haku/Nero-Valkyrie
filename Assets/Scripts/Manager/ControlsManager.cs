@@ -35,6 +35,7 @@ public class ControlsManager : MonoBehaviour
         player.SetMovementEnabled(true);
         player.aim.allowCameraLook = true;
         player.weapon.enabled = true; // Cho phép bắn
+        player.aim.allowZoom = true; // Cho phép zoom khi điều khiển nhân vật
         UI.instance.inGameUI.SwitchToCharacterUI();
     }
 
@@ -48,6 +49,7 @@ public class ControlsManager : MonoBehaviour
         player.SetMovementEnabled(false);
         player.aim.allowCameraLook = true;
         player.weapon.enabled = false; // Không cho phép bắn khi ở trên xe
+        player.aim.allowZoom = false; // Không cho phép zoom khi ở trên xe
         UI.instance.inGameUI.SwitchToCarUI();
     }
 
