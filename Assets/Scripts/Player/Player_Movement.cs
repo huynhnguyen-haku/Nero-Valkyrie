@@ -58,25 +58,20 @@ public class Player_Movement : MonoBehaviour
 
     #region Pause Logic
 
-    // Pause/unpause movement and animation
     public void SetPaused(bool isPaused)
     {
-        // Do not change controller state if player is in car
         if (isInCar)
         {
             Debug.Log("Player is in car, skipping CharacterController state change.");
             return;
         }
 
-        // Only change state if controller is valid and state is different
         if (controller != null && controller.enabled != !isPaused)
         {
             controller.enabled = !isPaused;
 
-            // Pause or resume animator
             if (animator != null)
                 animator.speed = isPaused ? 0 : 1;
-
         }
     }
 
@@ -84,7 +79,6 @@ public class Player_Movement : MonoBehaviour
 
     #region Animation Logic
 
-    // Update animator parameters for movement
     private void AnimatorControllers()
     {
         float xVelocity = Vector3.Dot(moveDirection.normalized, transform.right);
@@ -101,33 +95,35 @@ public class Player_Movement : MonoBehaviour
 
     #region Movement Logic
 
-    // Rotate player toward aim direction unless locked-on
-    // Because if the player is locked on, the player should rotate to face the enemy
     private void ApplyRotation()
     {
-        Vector3 cameraForward = Camera.main.transform.forward;
-        cameraForward.y = 0; // Giữ nhân vật thẳng đứng
-        if (cameraForward.sqrMagnitude > 0.01f)
+        if (player.health.playerIsDead || isInCar)
+            return;
+
+        // Lấy vị trí aim từ Player_AimController
+        Transform aim = player.aim.Aim();
+        if (aim != null)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(cameraForward);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+            Vector3 aimDirection = aim.position - transform.position;
+            aimDirection.y = 0; // Giữ xoay trên mặt phẳng XZ
+            if (aimDirection.sqrMagnitude > 0.01f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(aimDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+            }
         }
     }
 
-    // Move player based on input and play footstep SFX
     private void ApplyMovement()
     {
-        // Lấy hướng của camera
         Vector3 cameraForward = Camera.main.transform.forward;
         Vector3 cameraRight = Camera.main.transform.right;
 
-        // Loại bỏ thành phần y để đảm bảo di chuyển trên mặt phẳng XZ
         cameraForward.y = 0;
         cameraRight.y = 0;
         cameraForward.Normalize();
         cameraRight.Normalize();
 
-        // Tính toán hướng di chuyển dựa trên input và hướng camera
         moveDirection = cameraRight * moveInput.x + cameraForward * moveInput.y;
 
         ApplyGravity();
@@ -139,7 +135,6 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
-    // Apply gravity to movement
     private void ApplyGravity()
     {
         if (!controller.isGrounded)
@@ -157,7 +152,6 @@ public class Player_Movement : MonoBehaviour
 
     #region Input Events
 
-    // Assign input events for movement and sprint
     private void AssignInputEvents()
     {
         controls = player.controls;
@@ -205,7 +199,6 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
-    // Stop all footstep SFX
     private void StopFootstepsSFX()
     {
         walkSFX.Stop();

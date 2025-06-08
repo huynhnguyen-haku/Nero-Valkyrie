@@ -122,16 +122,6 @@ public class Enemy_Range : Enemy
 
         if (minimapIcon != null)
             minimapIcon.SetActive(false);
-
-        SetLayerRecursively(gameObject, LayerMask.NameToLayer("Enemy"));
-    }
-
-    // Set layer for this object and all children
-    private void SetLayerRecursively(GameObject obj, int newLayer)
-    {
-        obj.layer = newLayer;
-        foreach (Transform child in obj.transform)
-            SetLayerRecursively(child.gameObject, newLayer);
     }
     #endregion
 

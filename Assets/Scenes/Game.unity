@@ -1135,8 +1135,10 @@ MonoBehaviour:
   aim: {fileID: 497049308}
   aimLayer:
     serializedVersion: 2
-    m_Bits: 268481
+    m_Bits: 6337
   allowCameraLook: 1
+  allowZoom: 1
+  maxAimDistance: 50
 --- !u!114 &22133710
 MonoBehaviour:
   m_ObjectHideFlags: 0

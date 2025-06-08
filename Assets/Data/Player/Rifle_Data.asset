@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Stormpiercer
   weaponType: 2
-  bulletDamage: 14
+  bulletDamage: 16
   shotType: 1
   bulletsPerShot: 1
   fireRate: 600
@@ -34,5 +34,5 @@ MonoBehaviour:
   burst_FireDelay: 0.1
   weaponIcon: {fileID: 948876784, guid: 3477fe9a26e0faa42b5a9b5b258229c1, type: 3}
   weaponInfo: Versatile weapon for mid-range targets
-  isUnlocked: 0
+  isUnlocked: 1
   price: 1400

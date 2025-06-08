@@ -4666,7 +4666,7 @@ GameObject:
   - component: {fileID: 4780440374869415041}
   - component: {fileID: 7933123470204123589}
   - component: {fileID: 4518446263729837924}
-  m_Layer: 18
+  m_Layer: 11
   m_Name: mixamorig:Spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5269,7 +5269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatIsAlly:
     serializedVersion: 2
-    m_Bits: 264192
+    m_Bits: 2048
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 257

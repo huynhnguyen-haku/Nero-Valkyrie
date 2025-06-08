@@ -158,15 +158,6 @@ public class Enemy_Melee : Enemy
 
         if (minimapIcon != null)
             minimapIcon.SetActive(false);
-
-        SetLayerRecursively(gameObject, LayerMask.NameToLayer("Enemy"));
-    }
-
-    private void SetLayerRecursively(GameObject obj, int newLayer)
-    {
-        obj.layer = newLayer;
-        foreach (Transform child in obj.transform)
-            SetLayerRecursively(child.gameObject, newLayer);
     }
 
     // Update the current weapon and attack data

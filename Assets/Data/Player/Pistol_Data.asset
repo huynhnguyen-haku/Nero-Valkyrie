@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Shadowfang
   weaponType: 0
-  bulletDamage: 25
+  bulletDamage: 30
   shotType: 1
   bulletsPerShot: 1
   fireRate: 300

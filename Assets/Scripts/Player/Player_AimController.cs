@@ -27,7 +27,7 @@ public class Player_AimController : MonoBehaviour
     [SerializeField] private LayerMask aimLayer;
     public bool allowCameraLook = true;
     public bool allowZoom = true;
-
+    [SerializeField] private float maxAimDistance = 50f; // Khoảng cách tối đa cho raycast
 
     private Vector2 mouseInput;
     private RaycastHit lastKnownMouseHit;
@@ -65,7 +65,6 @@ public class Player_AimController : MonoBehaviour
         cinemachineTargetPitch = Mathf.Clamp(cinemachineTargetPitch, bottomClamp, topClamp);
         cinemachineCameraTarget.transform.rotation = Quaternion.Euler(cinemachineTargetPitch, cinemachineTargetYaw, 0f);
     }
-
 
     public Transform Aim() => aim;
 
@@ -107,11 +106,16 @@ public class Player_AimController : MonoBehaviour
 
     private void UpdateAimPosition()
     {
+        RaycastHit hitInfo = GetAimHitInfo();
+        if (Physics.Raycast(Camera.main.transform.position, (hitInfo.point - Camera.main.transform.position).normalized, out RaycastHit forwardHit, maxAimDistance, aimLayer))
         {
-            RaycastHit hitInfo = GetAimHitInfo();
-            aim.position = hitInfo.point;
-            aimTarget.GetComponent<SpriteRenderer>().color = Color.white;
+            aim.position = forwardHit.point;
         }
+        else
+        {
+            aim.position = Camera.main.transform.position + Camera.main.transform.forward * maxAimDistance;
+        }
+
         if (aimTarget != null)
         {
             aimTarget.transform.position = aim.position;
@@ -131,7 +135,7 @@ public class Player_AimController : MonoBehaviour
     {
         Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
         Ray ray = Camera.main.ScreenPointToRay(screenCenter);
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, aimLayer))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, maxAimDistance, aimLayer))
         {
             lastKnownMouseHit = hitInfo;
             return hitInfo;
@@ -165,7 +169,6 @@ public class Player_AimController : MonoBehaviour
             if (allowZoom)
                 zoomVirtualCamera.gameObject.SetActive(false);
         };
-
     }
 
     #endregion

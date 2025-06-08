@@ -26250,7 +26250,7 @@ GameObject:
   - component: {fileID: 1438391828130014546}
   - component: {fileID: 7199875937339506785}
   - component: {fileID: 1934477558901324331}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: DamageArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42005,7 +42005,7 @@ GameObject:
   - component: {fileID: 3460669467723921982}
   - component: {fileID: 1205424831269001695}
   - component: {fileID: 5881117477732750760}
-  m_Layer: 18
+  m_Layer: 11
   m_Name: mixamorig:Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}

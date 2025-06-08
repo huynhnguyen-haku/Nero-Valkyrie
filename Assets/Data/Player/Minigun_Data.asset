@@ -24,8 +24,8 @@ MonoBehaviour:
   reloadSpeed: 1.75
   equipSpeed: 1
   cameraDistance: 8
-  minSpread: 5
-  maxSpread: 10
+  minSpread: 3
+  maxSpread: 6
   spreadIncreaseRate: 0.5
   burstAvailable: 0
   burstActive: 0

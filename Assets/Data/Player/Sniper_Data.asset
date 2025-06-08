@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Eclipse Lance
   weaponType: 4
-  bulletDamage: 100
+  bulletDamage: 160
   shotType: 0
   bulletsPerShot: 1
   fireRate: 60
@@ -34,5 +34,5 @@ MonoBehaviour:
   burst_FireDelay: 0.1
   weaponIcon: {fileID: 1437709514, guid: 3477fe9a26e0faa42b5a9b5b258229c1, type: 3}
   weaponInfo: Precision tool for long-range bounties
-  isUnlocked: 0
+  isUnlocked: 1
   price: 2800

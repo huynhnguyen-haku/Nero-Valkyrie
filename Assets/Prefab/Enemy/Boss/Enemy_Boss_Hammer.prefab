@@ -63245,7 +63245,7 @@ GameObject:
   - component: {fileID: 2419181988304850763}
   - component: {fileID: 6526609779216855430}
   - component: {fileID: 8151589259019460357}
-  m_Layer: 18
+  m_Layer: 11
   m_Name: mixamorig:Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}

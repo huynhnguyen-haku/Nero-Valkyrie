@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Titan's Wrath
   weaponType: 1
-  bulletDamage: 60
+  bulletDamage: 80
   shotType: 0
   bulletsPerShot: 1
   fireRate: 150

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Doomhowl
   weaponType: 3
-  bulletDamage: 30
+  bulletDamage: 40
   shotType: 0
   bulletsPerShot: 5
   fireRate: 60
@@ -24,8 +24,8 @@ MonoBehaviour:
   reloadSpeed: 2.5
   equipSpeed: 2
   cameraDistance: 6
-  minSpread: 10
-  maxSpread: 10
+  minSpread: 7
+  maxSpread: 7
   spreadIncreaseRate: 0
   burstAvailable: 0
   burstActive: 0
