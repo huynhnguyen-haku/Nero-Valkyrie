@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum EquipType { SideEquipAnimation, BackEquipAnimation };
 public enum HoldType { CommonHold = 1, LowHold, HighHold };
@@ -11,6 +11,7 @@ public class WeaponModel : MonoBehaviour
 
     public Transform gunPoint;
     public Transform holdPoint;
+    public Transform leftElbowHintPoint; // Gán trong prefab vũ khí
 
     [Header("Audio")]
     public AudioSource fireSFX;

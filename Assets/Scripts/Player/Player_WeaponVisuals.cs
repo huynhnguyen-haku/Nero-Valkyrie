@@ -11,6 +11,7 @@ public class Player_WeaponVisuals : MonoBehaviour
 
     [Header("Left Hand IK Settings")]
     [SerializeField] private Transform leftHandIK_Target;
+    [SerializeField] private Transform leftHandIK_Hint;
     [SerializeField] private TwoBoneIKConstraint leftHandIK;
     [SerializeField] private float leftHandIK_WeightIncrease;
     private bool shouldIncrease_LeftHandIK_Weight;
@@ -115,8 +116,10 @@ public class Player_WeaponVisuals : MonoBehaviour
             {
                 if (backupModel.HangTypeIs(HangType.LowBackHang))
                     lowhangWeapon = backupModel;
+
                 if (backupModel.HangTypeIs(HangType.BackHang))
                     backhangWeapon = backupModel;
+
                 if (backupModel.HangTypeIs(HangType.SideHang))
                     sidehangWeapon = backupModel;
             }
@@ -163,6 +166,12 @@ public class Player_WeaponVisuals : MonoBehaviour
         Transform targetTranform = CurrentWeaponModel().holdPoint;
         leftHandIK_Target.localPosition = targetTranform.localPosition;
         leftHandIK_Target.localRotation = targetTranform.localRotation;
+
+        if (CurrentWeaponModel().leftElbowHintPoint != null && leftHandIK_Hint != null)
+        {
+            leftHandIK_Hint.localPosition = CurrentWeaponModel().leftElbowHintPoint.localPosition;
+            leftHandIK_Hint.localRotation = CurrentWeaponModel().leftElbowHintPoint.localRotation;
+        }
     }
 
     // Smoothly increase left hand IK weight
